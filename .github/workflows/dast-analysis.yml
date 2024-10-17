@@ -1,0 +1,24 @@
+name: DAST Analysis with OWASP ZAP
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run OWASP ZAP Scan
+      uses: zaproxy/action-full-scan@v0.1.0
+      with:
+        target: 'http://localhost:8080'
+        docker_name: 'owasp/zap2docker-stable'
+        rules_file_name: './zap-scan-configs/zap-config.xml'
