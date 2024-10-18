@@ -9,20 +9,25 @@ on:
       - main
 
 jobs:
-  zap_scan:
+  dast:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Check out repository
+        uses: actions/checkout@v2
 
-    - name: Run OWASP ZAP Scan
-      uses: zaproxy/action-full-scan@v0.1.0
-      with:
-        target: 'http://localhost:8080' # Replace by App's URL
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        app_username: ${{ secrets.APP_USERNAME }}
-        app_password: ${{ secrets.APP_PASSWORD }} 
-        docker_name: 'owasp/zap2docker-stable'
-        rules_file_name: './zap-scan-configs/zap-config.xml'
-        zap_options: '-config api.addrs.addr.name=localhost -config api.addrs.addr.regex=true'
+      - name: Start WebGoat Application
+        run: |
+          docker pull webgoat/webgoat-8.1
+          docker run -d -p 8080:8080 webgoat/webgoat-8.1
+
+      - name: Run OWASP ZAP
+        uses: zaproxy/action-full-scan@v0.1.0
+        with:
+          target: 'http://127.0.0.1:8080/WebGoat/' # Replace by App's URL
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          app_username: ${{ secrets.APP_USERNAME }}
+          app_password: ${{ secrets.APP_PASSWORD }} 
+          docker_name: 'owasp/zap2docker-stable'
+          rules_file_name: './zap-scan-configs/zap-config.xml'
+          zap_options: '-config api.addrs.addr.name=localhost -config api.addrs.addr.regex=true'
