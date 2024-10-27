@@ -1,31 +1,109 @@
-# automated-sast-dast-ci-pipeline-sonarcloud-zap
-Automated CI/CD pipeline integrating SAST (SonarCloud) and DAST (OWASP ZAP) using GitHub Actions for continuous vulnerability analysis in both code and application.
+# Automated SAST/DAST CI Pipeline
 
-# Automated SAST and DAST CI Pipeline
+Este repositório configura um pipeline de Integração Contínua (CI) automatizado para realizar análises de segurança em tempo de desenvolvimento, utilizando o **Bearer** para análise estática de segurança de aplicações (SAST). Esse pipeline é especialmente útil para detectar vulnerabilidades e falhas de conformidade de privacidade e segurança desde as fases iniciais do ciclo de desenvolvimento, mapeando fluxos de dados confidenciais para detectar Informações de Identificação Pessoal (PII)..
 
-This project demonstrates the integration of Static Application Security Testing (SAST) using SonarCloud and Dynamic Application Security Testing (DAST) using OWASP ZAP, automated through GitHub Actions in a CI/CD pipeline. The repository includes examples of workflow files for running these scans automatically for every push and pull request to the repository.
+## Objetivo
 
-## Project Structure
-- **src/**: Contains a simple HTML file representing the application being tested.
-- **zap-scan-configs/**: Contains the OWASP ZAP scan configuration.
-- **.github/workflows/**: Contains two workflow files: 
-    - `sast-analysis.yml`: Configured to run SonarCloud analysis.
-    - `dast-analysis.yml`: Configured to run OWASP ZAP scan.
+O objetivo deste projeto é oferecer um pipeline completo para:
+- Identificação e mitigação de vulnerabilidades no código-fonte através de análise estática (SAST).
+- Detecção de dados sensíveis e práticas que possam violar a privacidade.
+- Criação de relatórios automáticos que ajudam a identificar e priorizar riscos de segurança.
 
-## Tools Used
-- **SonarCloud**: A cloud-based SAST tool for analyzing source code.
-- **OWASP ZAP**: A DAST tool for scanning vulnerabilities in web applications.
-- **GitHub Actions**: Used to automate the scanning processes in a CI/CD pipeline.
+## Pré-requisitos
 
-## Getting Started
-1. **Fork this repository** to use as a template for your own security testing pipeline.
-2. **Configure SonarCloud**:
-    - Create an account on [SonarCloud](https://sonarcloud.io/) and link it to this GitHub repository.
-    - Generate a `SONAR_TOKEN` in SonarCloud and add it to your GitHub repository as a secret (`SONAR_TOKEN`).
-3. **OWASP ZAP Setup**:
-    - The `zap-scan-configs/zap-config.xml` file contains the OWASP ZAP configuration for the DAST analysis. Adjust it based on your requirements.
-4. **GitHub Actions**:
-    - GitHub Actions will run the SAST scan with SonarCloud and DAST scan with OWASP ZAP automatically for every push or pull request to the repository.
+- **Bearer CLI**: O Bearer CLI precisa estar instalado na máquina de CI/CD.
+- ### Instalação para Sistemas Linux:
+  - Para instalar o Bearer CLI, execute:
+    ```bash
+    curl -sfL https://raw.githubusercontent.com/Bearer/bearer/main/contrib/install.sh | sh
+    ```
+  - Para sistemas baseados em Debian/Ubuntu:
+    ```bash
+    sudo apt-get update && sudo apt-get install bearer
+    ```
+- ### Instalação no Windows através do WSL com Kali Linux:
+  Se você estiver utilizando o Windows com o WSL (Windows Subsystem for Linux) e tiver o Kali Linux configurado, siga os passos abaixo para instalar o Bearer:
+
+  1. **Instale o WSL**:
+     - Certifique-se de que o WSL está ativado no Windows. Abra o PowerShell como administrador e execute:
+       ```powershell
+       wsl --install
+       ```
+     - Reinicie o computador se necessário e instale a distribuição do Kali Linux pela Microsoft Store.
+
+  2. **Abra o Kali Linux pelo WSL**:
+     - Após a instalação, inicie o terminal do Kali Linux e atualize os pacotes com o comando:
+       ```bash
+       sudo apt update && sudo apt upgrade
+       ```
+
+  3. **Instale o Bearer no Kali Linux (WSL)**:
+     - Execute o comando de instalação abaixo diretamente no terminal do Kali Linux:
+       ```bash
+       curl -sfL https://raw.githubusercontent.com/Bearer/bearer/main/contrib/install.sh | sh
+       ```
+     - Alternativamente, para sistemas Debian (como o Kali):
+       ```bash
+       sudo apt-get update && sudo apt-get install bearer
+       ```
+       Após seguir esses passos, o Bearer estará instalado no WSL e pronto para ser utilizado dentro do ambiente do Kali Linux.
+
+## Configuração do Bearer
+
+1. **Clone o Repositório**:
+   - Clone este repositório para seu ambiente local ou de CI/CD:
+     ```bash
+     git clone https://github.com/seu_usuario/automated-sast-dast-ci-pipeline-(nome-repositorio).git
+     ```
+
+2. **Executando o Bearer Localmente**:
+   - No diretório do projeto, você pode executar o Bearer CLI para um teste local:
+     ```bash
+     bearer scan caminho-do-projeto
+     ```
+   - Isso gerará um relatório com detalhes de segurança, onde você poderá verificar problemas como dados sensíveis ou práticas de programação inseguras.
+
+## Integração com o Pipeline CI/CD
+
+1. **Configuração do Pipeline**:
+   - No arquivo de configuração do pipeline (ex: `.yaml` para o Azure DevOps), adicione o seguinte comando para integrar o Bearer ao pipeline de CI/CD:
+     ```yaml
+     - script: bearer scan caminho-do-projeto
+       displayName: 'Execução do Bearer SAST'
+     ```
+   - Esse comando rodará o Bearer automaticamente sempre que o pipeline for executado, gerando um relatório ao final do processo.
+
+2. **Personalização das Regras**:
+   - O Bearer permite que você configure regras customizadas para adaptar a análise de acordo com as necessidades de segurança específicas do projeto. Para isso, consulte a [documentação oficial do Bearer](https://docs.bearer.com) para definir regras adicionais.
+
+## Resultados e Relatórios
+
+Após cada execução, o Bearer gera um relatório detalhado com:
+- Lista de vulnerabilidades identificadas, incluindo descrição, criticidade e localização no código.
+- Alertas sobre dados sensíveis detectados (como PII) e práticas que possam violar regulamentos de privacidade, como o GDPR.
+- Sugestões para resolver os problemas identificados.
+
+Os resultados ajudam a priorizar correções e mitigação de riscos antes da implantação.
+
+## FAQ
+
+1. **Quais linguagens o Bearer suporta?**
+   - Bearer suporta uma variedade de linguagens de programação populares. Consulte a documentação para a lista completa de suporte.
+
+2. **Posso rodar o Bearer em Docker?**
+   - Sim, você pode usar o Bearer em Docker, facilitando sua execução em ambientes de CI/CD baseados em container.
+
+3. **Como configuro alertas personalizados?**
+   - Para configurar alertas específicos, adicione regras personalizadas no Bearer para ajustar as verificações e tornar a análise mais relevante para seu projeto.
+
+## Conclusão
+
+Este projeto oferece um pipeline integrado para análise de segurança e privacidade com o Bearer, ajudando a identificar vulnerabilidades e riscos de conformidade em tempo de desenvolvimento. Com isso, é possível resolver problemas de segurança mais cedo no ciclo de vida de desenvolvimento, evitando falhas críticas e otimizando a segurança de sua aplicação.
+
+---
+
+Para mais informações sobre o Bearer e seu uso, acesse a [documentação oficial do Bearer](https://docs.bearer.com).
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
