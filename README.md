@@ -1,6 +1,6 @@
 # Automated SAST/DAST in CI/CD Pipelines with Bearer
 
-Este repositório configura um pipeline de Integração Contínua (CI) automatizado para realizar análises de segurança em tempo de desenvolvimento, utilizando o **Bearer** para análise estática de segurança de aplicações (SAST). Esse pipeline é especialmente útil para detectar vulnerabilidades e falhas de conformidade de privacidade e segurança desde as fases iniciais do ciclo de desenvolvimento, mapeando fluxos de dados confidenciais para detectar Informações de Identificação Pessoal (PII).
+Este repositório configura um pipeline de Integração Contínua (CI) e Entrega Contínua automatizado para realizar análises de segurança em tempo de desenvolvimento, utilizando o **Bearer** para análise estática de segurança de aplicações (SAST). Esse pipeline é especialmente útil para detectar vulnerabilidades e falhas de conformidade de privacidade e segurança desde as fases iniciais do ciclo de desenvolvimento, mapeando fluxos de dados confidenciais para detectar Informações de Identificação Pessoal (PII).
 
 ## Objetivo
 
