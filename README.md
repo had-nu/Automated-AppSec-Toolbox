@@ -19,7 +19,7 @@ O objetivo deste projeto é oferecer um pipeline completo para:
     ```
   - Para sistemas baseados em Debian/Ubuntu:
     ```bash
-    sudo apt-get update && sudo apt-get install bearer
+    sudo apt update && sudo apt install bearer
     ```
 - ### Instalação no Windows através do WSL com Kali Linux:
   Se você estiver utilizando o Windows com o WSL (Windows Subsystem for Linux) e tiver o Kali Linux configurado, siga os passos abaixo para instalar o Bearer:
@@ -41,10 +41,6 @@ O objetivo deste projeto é oferecer um pipeline completo para:
      - Execute o comando de instalação abaixo diretamente no terminal do Kali Linux:
        ```bash
        curl -sfL https://raw.githubusercontent.com/Bearer/bearer/main/contrib/install.sh | sh
-       ```
-     - Alternativamente, para sistemas Debian (como o Kali):
-       ```bash
-       sudo apt-get update && sudo apt-get install bearer
        ```
        Após seguir esses passos, o Bearer estará instalado no WSL e pronto para ser utilizado dentro do ambiente do Kali Linux.
 
