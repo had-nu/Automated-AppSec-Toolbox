@@ -1,4 +1,4 @@
-# Automated SAST/DAST CI Pipeline
+# Automated SAST/DAST CI Pipeline with Bearer
 
 Este repositório configura um pipeline de Integração Contínua (CI) automatizado para realizar análises de segurança em tempo de desenvolvimento, utilizando o **Bearer** para análise estática de segurança de aplicações (SAST). Esse pipeline é especialmente útil para detectar vulnerabilidades e falhas de conformidade de privacidade e segurança desde as fases iniciais do ciclo de desenvolvimento, mapeando fluxos de dados confidenciais para detectar Informações de Identificação Pessoal (PII).
 
@@ -49,7 +49,7 @@ O objetivo deste projeto é oferecer um pipeline completo para:
 1. **Clone o Repositório**:
    - Clone este repositório para seu ambiente local ou de CI/CD:
      ```bash
-     git clone https://github.com/seu_usuario/Automated-SAST-DAST-CI-Pipeline-w-Bearer.git
+     git clone https://github.com/had-nu/Automated-SAST-DAST-CI-Pipeline-w-Bearer.git
      ```
 
 2. **Executando o Bearer Localmente**:
