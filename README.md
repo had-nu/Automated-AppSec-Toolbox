@@ -49,7 +49,7 @@ O objetivo deste projeto é oferecer um pipeline completo para:
 1. **Clone o Repositório**:
    - Clone este repositório para seu ambiente local ou de CI/CD:
      ```bash
-     git clone https://github.com/had-nu/Automated-SAST-DAST-CI-Pipeline-w-Bearer.git
+     git clone https://github.com/had-nu/Automated-SAST-DAST-CICD-Pipelines-w-Bearer.git
      ```
 
 2. **Executando o Bearer Localmente**:
