@@ -168,7 +168,7 @@ Para mais informações sobre o Bearer e seu uso, acesse a [documentação ofici
 ## Contribuindo
 
 Contribuições são bem-vindas! Este é um projeto em construção de um estudante, então seja legal. 
-Por favor, siga as diretrizes no arquivo CONTRIBUTING.md para submeter issues ou pull requests.
+Por favor, siga as diretrizes no arquivo `CONTRIBUTING.md` para submeter issues ou pull requests.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

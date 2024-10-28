@@ -40,4 +40,4 @@
     2. Hover on the `main` branch then click the ellipsis on the right of the column.
     3. Click on **Set as default branch**.
 
-**Following this steps you can use Git for version control in Azure Repos.**
+*Following this steps you will can use Git for version control in Azure Repos.*
