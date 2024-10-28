@@ -68,7 +68,7 @@ Caso enfrente dificuldades durante a instalação ou configuração do pipeline,
    git clone https://github.com/usuario/Automated-AppSec-Verify-CICD-Pipelines.git
    cd Automated-AppSec-Verify-CICD-Pipelines
 2. **Configurar Variáveis de Ambiente**:
-   Crie um arquivo .env na raiz do projeto com as credenciais necessárias para as ferramentas (exemplo em /docs/env-example).
+   Crie um arquivo `.env` na raiz do projeto com as credenciais necessárias para as ferramentas (exemplo em `/docs/env-example`).
 
 3. **Executar o Pipeline de Segurança**: 
 Use o GitHub Actions para disparar as execuções automatizadas ou configure os workflows manualmente com os comandos especificados em cada diretório.
@@ -165,6 +165,10 @@ Os resultados ajudam a priorizar correções e mitigação de riscos antes da im
 
 Para mais informações sobre o Bearer e seu uso, acesse a [documentação oficial do Bearer](https://docs.bearer.com).
 -->
+## Contribuindo
+
+Contribuições são bem-vindas! Este é um projeto em construção de um estudante, então seja legal. 
+Por favor, siga as diretrizes no arquivo CONTRIBUTING.md para submeter issues ou pull requests.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
