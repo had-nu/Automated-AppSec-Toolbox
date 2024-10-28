@@ -27,12 +27,12 @@
 2. **Create and configure the team project** (skip if done) 
     Create an Azure DevOps Project to be used to synchronize and version project code in CI/CD pipelines.
     1.  In a browser window open your Azure DevOps organization. Click on New Project. Give your project a `name` and choose your `Work item process` as you prefer. Click on **Create**.
-    <img src="docs/imgs/create-project.png" width="400"/></center></a>
+    <img src="/docs/imgs/create-project.png"/></center></a>
 
 3. **Import your Git Repository**
     Export the Git Repository that holds the code that will be verified.
     1. In a browser window open your Azure DevOps organization and the previously created project. Click on **Repos>Files , Import**. On the `Import a Git Repository` window, paste the Git Repo URL <https://github.com/{username}/{repository}.git> and click on `Import`.
-    ![Import Repo](docs/imgs/import-repo.png)
+    <img src="/docs/imgs/import-repo.png"/></center></a>
 
 4. **Set main branch as default branch**
 
