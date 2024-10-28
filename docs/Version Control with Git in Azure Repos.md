@@ -15,17 +15,19 @@
     2. In the Visual Studio Code interface, from the main menu, select **Terminal | New Terminal** to open the **TERMINAL** pane.
     3. Make sure that the current Terminal is running **PowerShell** by checking if the drop-down list at the top right corner of the TERMINAL pane shows `1: powershell`.
     4. In the TERMINAL pane, run the following command below to configure the credential helper:
-        ``bash``
+        ```bash
         git config --global credential.helper wincred
+        ```
     5. In the TERMINAL pane, run the following commands to configure a user name and email for Git commits (replace the placeholders in braces with your preferred user name and email eliminating the < and > symbols):
-        ``bash``
+        ```bash
         git config --global user.name "<Seu Nome>"
         git config --global user.email <seu-email@example.com> 
+        ```
 
 2. **Create and configure the team project** (skip if done) 
     Create an Azure DevOps Project to be used to synchronize and version project code in CI/CD pipelines.
     1.  In a browser window open your Azure DevOps organization. Click on New Project. Give your project a `name` and choose your `Work item process` as you prefer. Click on **Create**.
-    ![Create new project](docs/imgs/create-project.png)
+    <img src="docs/imgs/create-project.png" alt="Create new project"/>
 
 3. **Import your Git Repository**
     Export the Git Repository that holds the code that will be verified.
