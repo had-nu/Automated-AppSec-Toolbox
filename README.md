@@ -2,7 +2,7 @@
 
 Este repositório contém uma série de ferramentas ingradas para realizar testes de segurança em tempo de desenvolvimento, utilizando um conjunto de ferramentas para Teste Estático de Segurança de Aplicações (SAST), Teste Dinêmico de Aplicações (DAST), Teste Interativo de Segurança de Aplicações (IAST) e testes de segurança para Infraestrutura como Código (IaC). 
 
-Esse pipeline é especialmente útil para detectar vulnerabilidades e falhas de conformidade de privacidade e segurança ainda nas fases iniciais do ciclo de desenvolvimento, mapeando fluxos de dados confidenciais para detectar Informações de Identificação Pessoal (PII)..
+Esse pipeline é especialmente útil para detectar vulnerabilidades e falhas de conformidade de privacidade e segurança ainda nas fases iniciais do ciclo de desenvolvimento, mapeando fluxos de dados confidenciais para detectar Informações de Identificação Pessoal (PII).
 
 ## Objetivo
 
