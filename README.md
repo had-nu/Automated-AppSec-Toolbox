@@ -40,7 +40,7 @@ Antes de começar, certifique-se de ter os seguintes pré-requisitos:
 - Configuração dos agentes de build do Azure DevOps para permitir a execução dos contêineres Docker e ferramentas de análise de segurança, se aplicável.
 
 ## Setting Up
-
+<!-- 
 <details><summary><b>SAST</b></summary>
 
 **Configurando o Bearer**
@@ -105,6 +105,7 @@ Os resultados ajudam a priorizar correções e mitigação de riscos antes da im
 </details>
 
 ---
+-->
 <!-- 
 ## Configuração do Azure DevOps para Integração
 
