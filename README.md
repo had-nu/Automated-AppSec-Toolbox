@@ -43,10 +43,12 @@ Antes de começar, certifique-se de ter os seguintes pré-requisitos:
 
 <details><summary><b>SAST</b></summary>
 
-- **Configurando o Bearer**
+**Configurando o Bearer**
+
 O *Bearer CLI* está disponível como um *Docker image* no [Docker Hub](https://hub.docker.com/r/bearer/bearer) e [ghcr.io](https://github.com/bearer/bearer/internals/container/bearer).
 
-**Escaneie seu projeto**
+**Escaneando um projeto**
+
 Com o Docker instalado, você pode executar o seguinte comando com os caminhos apropriados no lugar dos exemplos marcados `{}`.
 ```
 docker run --rm -v {/path/to/repo}:/tmp/scan bearer/bearer:latest-amd64 scan /tmp/scan
@@ -67,6 +69,7 @@ docker compose run bearer scan /tmp/scan --debug
 As configurações do Docker acima sempre usarão a versão mais recente.
 </details>
 
+---
 ## Configuração do Azure DevOps para Integração
 
 Para integrar este repositório ao Azure DevOps, siga os passos abaixo:
