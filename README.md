@@ -10,18 +10,18 @@ O objetivo deste projeto é oferecer uma estrutura integrada e automatizada de v
 
 ## Ferramentas Utilizadas
 
-O pipeline utiliza uma combinação de ferramentas open-source e soluções de segurança de código para verificar a integridade e conformidade da aplicação. Abaixo estão as ferramentas configuradas:
+O pipeline utiliza uma combinação de ferramentas open-source e soluções de segurança de código para verificar a integridade e conformidade da aplicação.
 
-- **SAST (Static Application Security Testing)**: [Bearer](https://www.bearer.com/) via Docker para análise estática, detectando vulnerabilidades diretamente no código-fonte.
-- **DAST (Dynamic Application Security Testing)**: [OWASP ZAP](https://www.zaproxy.org/) para testes dinâmicos em uma aplicação em execução, identificando possíveis falhas de segurança.
-- **IAST (Interactive Application Security Testing)**: [Contrast Security Community Edition](https://www.contrastsecurity.com/) e [Hdiv](https://www.hdivsecurity.com/) para fornecer análise interativa durante a execução de testes, com insights em tempo real sobre vulnerabilidades.
-- **IaC (Infrastructure as Code)**: [Terraform](https://www.terraform.io/), [Terraform Compliance](https://terraform-compliance.com/) e [TFLint](https://github.com/terraform-linters/tflint) para verificar e assegurar conformidade e segurança na infraestrutura de código.
+- **SAST (Static Application Security Testing)**: [Bearer](https://www.bearer.com/) via [Docker](https://www.docker.com/) para análise estática de vulnerabilidades diretamente no código-fonte do [OWASP Juice Shop](https://github.com/juice-shop/juice-shop?tab=readme-ov-file).
+- **DAST (Dynamic Application Security Testing)**: [OWASP ZAP](https://www.zaproxy.org/) para testes dinâmicos em uma aplicação em execução, identificando possíveis falhas de segurança. (em construção)
+- **IAST (Interactive Application Security Testing)**: [Contrast Security Community Edition](https://www.contrastsecurity.com/) e [Hdiv](https://www.hdivsecurity.com/) para fornecer análise interativa durante a execução de testes, com insights em tempo real sobre vulnerabilidades. (aguardando)
+- **IaC (Infrastructure as Code)**: [Terraform](https://www.terraform.io/), [Terraform Compliance](https://terraform-compliance.com/) e [TFLint](https://github.com/terraform-linters/tflint) para verificar e assegurar conformidade e segurança na infraestrutura de código.(em construção)
 
 ## Estrutura do Repositório
 
 Este repositório está organizado em diferentes diretórios para cada tipo de verificação:
 
-- `/sast`: Configurações e scripts para SAST usando o Bearer.
+- `/sast`: Configurações e scripts para SAST usando Bearer e Docker.
 - `/dast`: Scripts e configurações para DAST com OWASP ZAP.
 - `/iast`: Configurações e instruções para IAST, com Contrast Security e Hdiv.
 - `/iac`: Configurações e scripts para verificações de IaC com Terraform, Terraform Compliance e TFLint.
@@ -32,12 +32,40 @@ Este repositório está organizado em diferentes diretórios para cada tipo de v
 
 Antes de começar, certifique-se de ter os seguintes pré-requisitos:
 
-- Conta no GitHub e acesso ao GitHub Actions.
+- Conta no GitHub e acesso ao [GitHub Actions](https://github.com/features/actions).
 - Docker instalado para execução dos contêineres das ferramentas de segurança.
 - Acesso aos registros do Docker para cada ferramenta configurada, se aplicável.
 - Configurações de API e tokens de autenticação para Contrast Security e outras ferramentas, conforme necessário.
-- Conta no Azure DevOps e acesso ao Azure Repos Git para sincronizar e versionar o código do projeto em pipelines de CI/CD.
-- Configuração dos agentes de build do Azure DevOps para permitir a execução dos contêineres Docker e ferramentas de análise de segurança.
+- Conta no Azure DevOps e acesso ao Azure Repos Git para sincronizar e versionar o código do projeto em pipelines de CI/CD, se aplicável.
+- Configuração dos agentes de build do Azure DevOps para permitir a execução dos contêineres Docker e ferramentas de análise de segurança, se aplicável.
+
+## Setting Up
+
+<details><summary><b>SAST</b></summary>
+
+- **Configurando o Bearer**
+O *Bearer CLI* está disponível como um *Docker image* no [Docker Hub](https://hub.docker.com/r/bearer/bearer) e [ghcr.io](https://github.com/bearer/bearer/internals/container/bearer).
+
+**Escaneie seu projeto**
+Com o Docker instalado, você pode executar o seguinte comando com os caminhos apropriados no lugar dos exemplos marcados `{}`.
+```
+docker run --rm -v {/path/to/repo}:/tmp/scan bearer/bearer:latest-amd64 scan /tmp/scan
+```
+Você também pode usar o *Docker Compose*. Adicione o seguinte ao seu arquivo `docker-compose.yml` e substitua os volumes pelos caminhos apropriados para seu projeto:
+```
+version: "3"services:
+  bearer:
+    platform: linux/amd64
+    image: bearer/bearer:latest-amd64
+    volumes:
+      - /path/to/repo:/tmp/scan
+```
+Em seguida, execute o comando `docker compose run` para executar o Bearer CLI com quaisquer sinalizadores especificados. Por exemplo:
+```
+docker compose run bearer scan /tmp/scan --debug
+```
+As configurações do Docker acima sempre usarão a versão mais recente.
+</details>
 
 ## Configuração do Azure DevOps para Integração
 
