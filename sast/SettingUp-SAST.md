@@ -14,7 +14,7 @@ Se quiser saber mais sobre a ferramenta, consulte a [documentação oficial](htt
 ### Configurando o Bearer
 O *Bearer CLI* está disponível como um *Docker image* no [Docker Hub](https://hub.docker.com/r/bearer/bearer) e [ghcr.io](https://github.com/bearer/bearer/internals/container/bearer).
 
-### Escaneando um projeto
+### Verificando um projeto
 Com o Docker instalado, você pode executar o seguinte comando com os caminhos apropriados no lugar dos exemplos marcados `{}`.
 ```
 docker run --rm -v {/path/to/repo}:/tmp/scan bearer/bearer:latest-amd64 scan /tmp/scan
@@ -59,8 +59,8 @@ O OWASP Juice Shop simula um aplicativo JavaScript realista com falhas de segura
 **From Sources**
   1. Instale [node.js](https://github.com/juice-shop/juice-shop?tab=readme-ov-file#nodejs-version-compatibility)
   2. Execute o comando `git clone https://github.com/juice-shop/juice-shop.git --depth 1` (ou
-  clone [your own fork](https://github.com/juice-shop/juice-shop/fork) do repositório)
-  3. Use o camando `cd juice-shop` para ir até o diretório clonado localmente
+  clone [seu próprio fork](https://github.com/juice-shop/juice-shop/fork) do repositório)
+  3. Use o comando `cd juice-shop` para ir até o diretório clonado localmente
   4. Execute o comando `npm install` (só precisa ser feito antes da primeira inicialização ou quando você altera o código-fonte)
   5. Execute o comando `npm start`
   6. Em seu navegador, acesse [http://localhost:3000](http://localhost:3000/)
@@ -81,3 +81,51 @@ O OWASP Juice Shop simula um aplicativo JavaScript realista com falhas de segura
   Se isso não resolver o seu problema, publique-o no [Gitter Chat](https://gitter.im/bkimminich/juice-shop) onde os membros da comunidade podem tentar ajudá-lo melhor.
 
   ---
+
+### Verificando o Juice Shop
+
+Uma vez que você clonou ou baixou o OWASP Juice Shop, agora você pode executar o comando scan com bearer scan no diretório do projeto
+
+```
+bearer scan juice-shop
+```
+Uma barra de progresso exibirá o status da varredura.
+
+Assim que a varredura for concluída, o Bearer CLI emitirá, por padrão, um relatório de segurança com detalhes de quaisquer descobertas de regras, bem como onde na base de código as infrações aconteceram e por quê.
+
+Por padrão, o comando `scan` usa a varredura SAST, entretanto outros [tipos de varredura](https://docs.bearer.com/explanations/scanners) estão disponíveis.
+
+### Analisando os Relatórios
+
+O relatório de segurança é uma visão facilmente digerível dos problemas de segurança detectados pelo Bearer CLI. Um relatório é composto por:
+
+- A lista de [regras](https://docs.bearer.com/reference/rules/) executadas em seu código.
+- Cada descoberta detectada, contendo o local do arquivo e as linhas que acionaram a descoberta da regra.
+- Uma seção de estatísticas com um resumo das verificações de regras, descobertas e avisos.
+
+O OWASP Juice Shop acionará descobertas de regras e produzirá um relatório completo. Eis um exemplo de uma seção da saída:
+
+```
+...
+HIGH: Sensitive data stored in HTML local storage detected. [CWE-312]
+https://docs.bearer.com/reference/rules/javascript_lang_session
+To skip this rule, use the flag --skip-rule=javascript_lang_session
+
+File: juice-shop/frontend/src/app/login/login.component.ts:102
+
+ 102       localStorage.setItem('email', this.user.email)
+
+
+=====================================
+
+59 checks, 40 findings
+
+CRITICAL: 0
+HIGH: 16 (CWE-22, CWE-312, CWE-798, CWE-89)
+MEDIUM: 24 (CWE-327, CWE-548, CWE-79)
+LOW: 0
+WARNING: 0
+```
+Além do relatório de segurança, você também pode executar um [relatório de privacidade](https://docs.bearer.com/explanations/reports/#privacy-report).
+
+Opções adicionais para usar e configurar o comando `scan` podem ser encontradas em [configurando o comando scan](https://docs.bearer.com/guides/configure-scan/).
