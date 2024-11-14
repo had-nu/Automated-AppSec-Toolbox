@@ -35,6 +35,7 @@ docker compose run bearer scan /tmp/scan --debug
 As configurações do Docker acima sempre usarão a versão mais recente.
 
 **Personalização das Regras**
+
 O Bearer permite que você configure regras customizadas para adaptar a análise de acordo com as necessidades de segurança específicas do projeto. Para isso, consulte a [documentação oficial do Bearer](https://docs.bearer.com) para definir regras adicionais.
 
 Para configurar alertas específicos, adicione regras personalizadas no Bearer para ajustar as verificações e tornar a análise mais relevante para seu projeto.
@@ -66,6 +67,7 @@ O OWASP Juice Shop simula um aplicativo JavaScript realista com falhas de segura
 
     
 **Docker Container**
+
   1. Instale o [Docker](https://www.docker.com/)
   2. Execute o comando `docker pull bkimminich/juice-shop`
   3. Execute o comando `docker run --rm -p 127.0.0.1:3000:3000 bkimminich/juice-shop`
