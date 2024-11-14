@@ -77,7 +77,7 @@ O OWASP Juice Shop simula um aplicativo JavaScript realista com falhas de segura
 
 **Troubleshooting**
 
-  Se precisar de ajuda com a configuração da aplicação, consulte o [Guia de Solução de Problemas do OWASP Juice Shop](https://pwning.owasp-juice.shop/appendix/troubleshooting.html). 
-  Se isso não resolver o seu problema, publique seu problema ou dúvida específica no [Gitter Chat](https://gitter.im/bkimminich/juice-shop) onde os membros da comunidade podem tentar ajudá-lo melhor.
+  Se precisar de ajuda com a configuração da aplicação, consulte o [Guia de Solução de Problemas do OWASP Juice Shop](https://pwning.owasp-juice.shop/appendix/troubleshooting.html).
+  Se isso não resolver o seu problema, publique-o no [Gitter Chat](https://gitter.im/bkimminich/juice-shop) onde os membros da comunidade podem tentar ajudá-lo melhor.
 
   ---
