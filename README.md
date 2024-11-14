@@ -70,6 +70,25 @@ As configurações do Docker acima sempre usarão a versão mais recente.
 </details>
 
 ---
+
+<details><summary><b>DAST</b></summary>
+
+</details>
+
+---
+
+<details><summary><b>IAST</b></summary>
+
+</details>
+
+---
+
+<details><summary><b>IaC</b></summary>
+
+</details>
+
+---
+<!-- 
 ## Configuração do Azure DevOps para Integração
 
 Para integrar este repositório ao Azure DevOps, siga os passos abaixo:
@@ -87,6 +106,7 @@ Para integrar este repositório ao Azure DevOps, siga os passos abaixo:
 
 4. **Configurar SonarCloud ou Ferramentas Alternativas**:
    - Caso deseje incluir o SonarCloud como parte do pipeline, integre-o ao projeto para realizar análises adicionais de qualidade de código e conformidade com boas práticas.
+-->
 
 ## Suporte
 
