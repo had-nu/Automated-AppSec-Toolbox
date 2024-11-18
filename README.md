@@ -1,4 +1,4 @@
-# Automated Application Security Verifications in CI/CD Pipelines
+# Automated Application Security Toolbox
 
 Este repositório contém uma série de ferramentas ingradas para realizar testes de segurança em tempo de desenvolvimento, utilizando um conjunto de ferramentas para Teste Estático de Segurança de Aplicações (SAST), Teste Dinêmico de Aplicações (DAST), Teste Interativo de Segurança de Aplicações (IAST) e testes de segurança para Infraestrutura como Código (IaC). 
 
